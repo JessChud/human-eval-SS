@@ -3,6 +3,8 @@ from openai import OpenAI
 # TODO: Delete before push!!!
 SS_API_KEY = ''
 SS_TOG_API_KEY = ''
+
+
 client = OpenAI(api_key=SS_API_KEY)
 togClient = OpenAI(api_key=SS_TOG_API_KEY, base_url='https://api.together.xyz')
 
