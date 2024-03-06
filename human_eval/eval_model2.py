@@ -43,16 +43,23 @@ def generate_answers(model, questions, out_file_path_prefix='gpt3.5_codeOnlyProm
     return answers
 
 
-def extract_code(answers: list, out_file_path_prefix='gpt3.5_codeOnlyPrompt') -> list:
+def clean_extract(answer: str) -> str:
+    # Gets rid of triple tick marks, "python" header, newlines
+    output = answer[10:-4]
+    return output
+
+
+def extract_code(answers: dict, out_file_path_prefix='gpt3.5_codeOnlyPrompt') -> dict:
     clean_answers = {}
+    extracter = GPT()
 
     for answer_key in answers:
         model_answer = answers[answer_key]
 
-        # TODO: extract function code
-        # - could even just prompt gpt3p5 to return just the answer and nothing else
-        clean_answer = None
+        extract_prompt = ''''''
+        extracted_code = extracter.answer_txt(extract_prompt.format(model_answer))
 
+        clean_answer = clean_extract(extracted_code)
         clean_answers[answer_key] = clean_answer
 
         print('- - - CLEANED ANSWER', '\n', clean_answer)
